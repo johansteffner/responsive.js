@@ -81,26 +81,33 @@
                 this.eventEmitter = new EventEmitter();
             }
 
-            setTimeout(function defer () {
-                this.listen();
-                this.update();
-            }.bind(this));
+            this.listen();
+            this.update(true);
         }
 
-        Responsive.prototype.update = function() {
+        Responsive.prototype.update = function(deferEvents) {
             var _previousBreakpoints = this._currentBreakpoints;
             this._currentBreakpoints = _.filter(_.keys(this.breakpoints), function(breakpoint) {
                 return !!matchMedia(this.breakpoints[breakpoint]).matches;
             }, this);
 
             if (!_.isEqual(_previousBreakpoints, this._currentBreakpoints)) {
-                this.dispatchEvents(this._currentBreakpoints, _previousBreakpoints);
+                if (deferEvents) {
+                    setTimeout(function defer () {
+                        this.dispatchEvents(this._currentBreakpoints, _previousBreakpoints);
+                    }.bind(this));
+                }
+                else {
+                    this.dispatchEvents(this._currentBreakpoints, _previousBreakpoints);
+                }
             }
         };
 
         Responsive.prototype.listen = function() {
             if (!this.listening) {
-                window.addEventListener('resize', _.throttle(this.update.bind(this), 1000));
+                window.addEventListener('resize', _.throttle(function handleResize() {
+                    this.update();
+                }.bind(this), 1000));
                 this.listening = true;
             }
         };
