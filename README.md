@@ -1,1 +1,2 @@
-==Simple responsive js library==
+Simple responsive checking library
+==================================
