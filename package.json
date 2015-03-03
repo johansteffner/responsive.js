@@ -1,0 +1,19 @@
+{
+  "name": "responsive.js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "responsive.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/johansteffner/responsive.js.git"
+  },
+  "author": "Johan Steffner",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/johansteffner/responsive.js/issues"
+  },
+  "homepage": "https://github.com/johansteffner/responsive.js",
+  "dependencies": {
+    "lodash": "^3.3.1"
+  }
+}
