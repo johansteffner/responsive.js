@@ -10,4 +10,5 @@ Example
             "portable": "screen and (max-width: 1023px)",
             "desk":     "screen and (min-width: 1024px)",
         });
-    console.log(responsive.is('desk'));
+        
+    console.log(r.is('desk'));
