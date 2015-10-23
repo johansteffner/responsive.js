@@ -4,7 +4,7 @@ Simple responsive checking library
 
 Example
 -------
-
+```js
     var responsive = require('responsive');
     var r = responsive({
             "portable": "screen and (max-width: 1023px)",
@@ -12,3 +12,4 @@ Example
         });
         
     console.log(r.is('desk'));
+```
